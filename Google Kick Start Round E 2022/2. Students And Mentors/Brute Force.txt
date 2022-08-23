@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+#include<climits>
+using namespace std;
+
+int main()
+{
+    int n,count=1;
+    cin>>n;
+    while(n--)
+    {
+        long long int x;
+        cin>>x;
+        vector<int>c1(x);
+        vector<int>c2(x,-1);
+        for(int i=0;i<x;i++)
+        {
+            int m;
+            cin>>m;
+            c1[i]=m; 
+        }
+        for(int i=0;i<x;i++)
+        {
+            int maxi=INT_MIN;
+
+            for(int j=0;j<x;j++)
+            {
+                if(c1[j]<=2*c1[i] && c1[j]>maxi && c1[i]!=c1[j])
+                {
+                    c2[i]=c1[j];
+                    maxi=c1[j];
+                }
+            }
+        }
+        
+        cout<<"Case #"<<count++<<": ";
+        for(int i=0;i<x;i++)
+        {
+            cout<<c2[i]<<" "; 
+        }
+        cout<<endl;
+    }
+    
+    return 1;
+}
